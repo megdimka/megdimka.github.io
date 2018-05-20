@@ -42,7 +42,7 @@ function isCompatible() {
 }
 function init()
 {
-	var constraints = { video: true}, snap;
+	var constraints = { video: true};
 	navigator.mediaDevices.enumerateDevices()
 	
 		.then((devices) => 
@@ -86,13 +86,16 @@ function init()
 		console.error("[camera] rejected!", error);
 		alert("error", error);
 	}
-	ael("#fullscreen", "click", () => 
+	ael("#fullscreen", "click", a => 
 	{
-		video.requestFullscreen? video.requestFullscreen() : video.mozRequestFullscreen? video.mozRequestFullscreen() : video.webkitRequestFullscreen()
+		video.requestFullscreen? video.requestFullscreen() : video.mozRequestFullscreen? video.mozRequestFullscreen() : video.webkitRequestFullscreen();
+		a.preventDefault();
 	});
-	ael("#snap", "click", () => 
+	ael("#snap", "click", a => 
 	{
-		alert("link", new Blob([get("video").srcObject]));
+		URL = URL || webkitURL;
+		alert("link", URL.createObjectURL(new Blob([get("video").srcObject])));
+		a.preventDefault();
 	});
 	navigator.mediaDevices.getUserMedia(constraints).then(stream => video.srcObject = stream).catch(handleError);
 	get("#splash").remove();
