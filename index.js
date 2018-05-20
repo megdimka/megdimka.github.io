@@ -42,8 +42,9 @@ function isCompatible() {
 }
 function init()
 {
-	var constraints, snap;
+	var constraints = { video: true}, snap;
 	navigator.mediaDevices.enumerateDevices()
+	
 		.then((devices) => 
 		{
 			var device = devices.filter(device => 
@@ -78,7 +79,7 @@ function init()
 					audio: false
 				}
 			}
-		})//.catch(handleError);
+		}).catch(handleError);
 	const video = document.querySelector("#camera");
 	function handleSuccess(stream)
 	{
