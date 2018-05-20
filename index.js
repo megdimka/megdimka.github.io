@@ -1,7 +1,7 @@
 get = document.querySelector;
 function ael(a,b,c)
 {
-	get(a).addEventListener(b,c);
+	get(a).addEventListener(b,c, {passive: true});
 }
 function setprop (a, b, c)
 {
@@ -27,8 +27,7 @@ function sw()
 }
 function onload()
 {
-	sw();
-	get("#loading").remove();
+//	sw();
 	init();
 }
 function update(stream)
@@ -102,4 +101,5 @@ function init()
 		snap = true;
 	});
 	navigator.mediaDevices.getUserMedia(constraints).then(handleSuccess).catch(handleError);
+	get("#splash").remove();
 }

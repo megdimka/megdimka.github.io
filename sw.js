@@ -5,8 +5,7 @@ const urls =
 	'/index.js',
 	'/manifest.json',
 	'/sw.js',
-	'/favicon.png',
-	'/favicon.ico'
+	'/favicon.png'
 ];
 self.addEventListener('install', event => 
 {
