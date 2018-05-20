@@ -1,6 +1,6 @@
 function get(a)
 {
-	return document.querySelector(a);
+	return get(a);
 }
 function ael(a,b,c)
 {
@@ -10,14 +10,14 @@ function setprop (a, b, c)
 {
 	get(a)[b] = c;
 }
-function alert(title, msg)
-{
-	dialog = get("dialog");
-	setprop(".mdl-dialog__title", "innerHTML", title);
-	setprop(".mdl-dialog__content", "innerHTML", msg);
-	ael("#dialog-ok", "click", () => dialog.close());
-	dialog.show();
-}
+//function alert(title, msg)
+//{
+//	dialog = get("dialog");
+//	setprop(".mdl-dialog__title", "innerHTML", title);
+//	setprop(".mdl-dialog__content", "innerHTML", msg);
+//	ael("#dialog-ok", "click", () => dialog.close());
+//	dialog.show();
+//}
 function sw()
 {
 	if('serviceWorker' in navigator)
@@ -51,7 +51,7 @@ function init()
 			{
 				if(device.kind == "videoinput") return device;
 			});
-			alert("device", device);
+			alert(/*"device", */device);
 			if(device.length > 1)
 			{
 				constraints = 
@@ -80,11 +80,11 @@ function init()
 				}
 			}
 		}).catch(handleError);
-	const video = document.querySelector("#camera");
+	const video = get("#camera");
 	function handleError(error)
 	{
 		console.error("[camera] rejected!", error);
-		alert("error", error);
+		alert(/*"error", */error);
 	}
 	ael("#fullscreen", "click", a => 
 	{
@@ -94,7 +94,7 @@ function init()
 	ael("#snap", "click", a => 
 	{
 		URL = URL || webkitURL;
-		alert("link", URL.createObjectURL(new Blob([get("video")])));
+		alert(/*"link", */URL.createObjectURL(new Blob([get("video")])));
 		a.preventDefault();
 	});
 	navigator.mediaDevices.getUserMedia(constraints).then(stream => video.srcObject = stream).catch(handleError);
