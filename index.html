@@ -21,18 +21,17 @@
 <body onload="onload()">
 <div class="mdl-layout mdl-js-layout mdl-layout--fixed-header">
   <header class="mdl-layout__header">
+  <div class="mdl-layout-icon"></div>
     <div class="mdl-layout__header-row">
       <!-- Title -->
       <span class="mdl-layout-title">camera</span>
+      <div class="mdl-layout-spacer"></div>
+      <nav class="mdl-navigation">
+      	<a id="fullscreen" class="mdl-navigation__link" href="#">fullscreen</a>
+      	<a id="snap"       class="mdl-navigation__link" href="#">screenshot</a>
+      </nav>
     </div>
   </header>
-  <div class="mdl-layout__drawer">
-    <span class="mdl-layout-title">menu</span>
-    <nav class="mdl-navigation">
-    	<a id="fullscreen" class="mdl-navigation__link" href="#">fullscreen</a>
-    	<a id="snap" class="mdl-navigation__link" href="#">screenshot</a>
-    </nav>
-  </div>
   <main class="mdl-layout__content">
     <div id='body' class="page-content">
     	<center id="splash"><div class="mdl-spinner mdl-js-spinner is-active"></div></center>

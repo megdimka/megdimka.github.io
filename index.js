@@ -51,7 +51,6 @@ function init()
 			{
 				if(device.kind == "videoinput") return device;
 			});
-			alert(/*"device", */device);
 			if(device.length > 1)
 			{
 				constraints = 
@@ -94,7 +93,13 @@ function init()
 	ael("#snap", "click", a => 
 	{
 		URL = URL || webkitURL;
-		alert(/*"link", */URL.createObjectURL(new Blob([get("video")])));
+		var c = document.createElement("canvas");
+		var ctx = c.getContext("2d");
+		ctx.drawImage(get("video"), 0, 0, c.width, c.height);
+		var l = document.createElement('a');
+		l.href = c.toDataURL();
+		l.download='scrshoot.png';
+		l.click();
 		a.preventDefault();
 	});
 	navigator.mediaDevices.getUserMedia(constraints).then(stream => video.srcObject = stream).catch(handleError);
