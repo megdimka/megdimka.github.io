@@ -1,14 +1,15 @@
+get = document.querySelector;
 function ael(a,b,c)
 {
-	document.querySelector(a).addEventListener(b,c);
+	get(a).addEventListener(b,c);
 }
 function setprop (a, b, c)
 {
-	document.querySelector(a)[b] = c;
+	get(a)[b] = c;
 }
 function alert(title, msg)
 {
-	dialog = document.querySelector("dialog");
+	dialog = get("dialog");
 	setprop(".mdl-dialog__title", "innerHTML", title);
 	setprop(".mdl-dialog__content", "innerHTML", msg);
 	ael("#dialog-ok", "click", () => dialog.close());
@@ -27,18 +28,19 @@ function sw()
 function onload()
 {
 	sw();
-	document.querySelector("#loading").remove();
+	get("#loading").remove();
 	init();
 }
 function update(stream)
 {
-	document.querySelector("video").src = stream.url;
+	get("video").src = stream.url;
 }
 function isCompatible() {
   return !!(navigator.mediaDevices && navigator.mediaDevices.getUserMedia);
 }
 function init()
 {
+	var constraints, snap;
 	navigator.mediaDevices.enumerateDevices()
 		.then(devices => 
 		{
@@ -46,22 +48,23 @@ function init()
 			{
 				if(device.kind == "videoinput") return device;
 			});
+			alert("device", device);
 			if(device.length > 1)
 			{
-				var constraints = 
+				constraints = 
 				{
 					video:
 					{
 						mandatory:
 						{
-							sourceId: device[1]/deviceId ? device[1].deviceId : null
+							sourceId: device[1].deviceId ? device[1].deviceId : null
 						}
 					},
 					audio: false
 				}
 			} else if(device.length)
 			{
-				var constraints = 
+				constraints = 
 				{
 					video:
 					{
@@ -73,11 +76,17 @@ function init()
 					audio: false
 				}
 			}
-		}).catch(handleError);
+		})//.catch(handleError);
 	const video = document.querySelector("#camera");
 	function handleSuccess(stream)
 	{
+		if(snap)
+		{
+			window.open(stream);
+			snap = false;
+		}
 		video.srcObject = stream;
+		
 	}
 	function handleError(error)
 	{
@@ -87,6 +96,10 @@ function init()
 	ael("#fullscreen", "click", () => 
 	{
 		video.requestFullscreen? video.requestFullscreen() : video.mozRequestFullscreen? video.mozRequestFullscreen() : video.webkitRequestFullscreen()
+	});
+	ael("snap", "click", () => 
+	{
+		snap = true;
 	});
 	navigator.mediaDevices.getUserMedia(constraints).then(handleSuccess).catch(handleError);
 }

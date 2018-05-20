@@ -1,9 +1,12 @@
 
 <!DOCTYPE html>
-<html>
+<html lang="en-GB">
 <head>
 	<title>camera</title>
-	<meta charset="utf-8">
+	<meta charset="utf-8"   >
+	<meta viewport="width=device-width initial-scale=1 user-scalable=no orientation=portrait">
+	<meta name="Description" content="camera, Camera, simple camera, PWA example, pwa.rocks, Simple camera">
+	<meta name="theme-color" content="#3367D6">
 	<link rel="icon"       href="/favicon.ico" type="image/x-icon" >
 	<link rel="manifest"   href="/manifest.json" >
 	<link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
@@ -12,7 +15,7 @@
 	<style>
 		video {
 			width: 100%;
-			height: 50%;
+			height: 90%;
 		}
 	</style>
 </head>
@@ -28,11 +31,11 @@
     <span class="mdl-layout-title">menu</span>
     <nav class="mdl-navigation">
     	<a id="fullscreen" class="mdl-navigation__link" href="#">fullscreen</a>
+    	<a id="snap" class="mdl-navigation__link" href="#">screenshot</a>
     </nav>
   </div>
   <main class="mdl-layout__content">
     <div id='body' class="page-content">
-    	<!--body-->
     	<dialog class="mdl-dialog">
     		<h4 class="mdl-dialog__title"></h4>
     		<div class="mdl-dialog__content"></div>
@@ -41,8 +44,8 @@
     		</div>
     	</dialog>
     	<center id="loading"><div class="mdl-spinner mdl-js-spinner is-active"></div></center>
-    	<video id="camera" autoplay></video><br />
-    	<canvas id="snapshot"></canvas>
+    	<!--body-->
+    	<video id="camera" autoplay></video>
     	<!--body-->
     </div>
   </main>
