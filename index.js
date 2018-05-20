@@ -92,7 +92,7 @@ function init()
 	});
 	ael("#snap", "click", () => 
 	{
-		window.open(get("video").srcObject);
+		alert("link", get("video").srcObject);
 	});
 	navigator.mediaDevices.getUserMedia(constraints).then(stream => video.srcObject = stream).catch(handleError);
 	get("#splash").remove();
