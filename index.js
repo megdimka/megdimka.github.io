@@ -1,6 +1,6 @@
 function get(a)
 {
-	return get(a);
+	return document.querySelector(a);
 }
 function ael(a,b,c)
 {
