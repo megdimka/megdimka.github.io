@@ -1,4 +1,7 @@
-var get = document.querySelector;
+function get(a)
+{
+	return document.querySelector(a);
+}
 function ael(a,b,c)
 {
 	get(a).addEventListener(b,c);
