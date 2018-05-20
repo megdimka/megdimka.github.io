@@ -10,14 +10,14 @@ function setprop (a, b, c)
 {
 	get(a)[b] = c;
 }
-//function alert(title, msg)
-//{
-//	dialog = get("dialog");
-//	setprop(".mdl-dialog__title", "innerHTML", title);
-//	setprop(".mdl-dialog__content", "innerHTML", msg);
-//	ael("#dialog-ok", "click", () => dialog.close());
-//	dialog.show();
-//}
+function alert(title, msg)
+{
+	dialog = get("dialog");
+	setprop(".mdl-dialog__title", "innerHTML", title);
+	setprop(".mdl-dialog__content", "innerHTML", msg);
+	ael("#dialog-ok", "click", () => dialog.close());
+	dialog.show();
+}
 function sw()
 {
 	if('serviceWorker' in navigator)
@@ -30,7 +30,7 @@ function sw()
 }
 function onload()
 {
-//	sw();
+	sw();
 	init();
 }
 function update(stream)
@@ -83,7 +83,7 @@ function init()
 	function handleError(error)
 	{
 		console.error("[camera] rejected!", error);
-		alert(/*"error", */error);
+		alert("error", error);
 	}
 	ael("#fullscreen", "click", a => 
 	{
