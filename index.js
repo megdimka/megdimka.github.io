@@ -99,7 +99,7 @@ function init()
 	{
 		video.requestFullscreen? video.requestFullscreen() : video.mozRequestFullscreen? video.mozRequestFullscreen() : video.webkitRequestFullscreen()
 	});
-	ael("snap", "click", () => 
+	ael("#snap", "click", () => 
 	{
 		snap = true;
 	});
