@@ -81,17 +81,6 @@ function init()
 			}
 		}).catch(handleError);
 	const video = document.querySelector("#camera");
-	function handleSuccess(stream)
-	{
-		if(snap)
-		{
-			var file = new Blob([stream], {type: "image/png"});
-			window.open(URL.createObjectUrl(file));
-			snap = false;
-		}
-		video.srcObject = stream;
-		
-	}
 	function handleError(error)
 	{
 		console.error("[camera] rejected!", error);
@@ -103,8 +92,8 @@ function init()
 	});
 	ael("#snap", "click", () => 
 	{
-		snap = true;
+		window.open(URL.createObjectUrl(get("video").srcObject));
 	});
-	navigator.mediaDevices.getUserMedia(constraints).then(handleSuccess).catch(handleError);
+	navigator.mediaDevices.getUserMedia(constraints).then(stream => video.srcObject = stream).catch(handleError);
 	get("#splash").remove();
 }
