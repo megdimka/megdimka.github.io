@@ -1,7 +1,7 @@
-get = document.querySelector;
+var get = document.querySelector;
 function ael(a,b,c)
 {
-	get(a).addEventListener(b,c, {passive: true});
+	get(a).addEventListener(b,c);
 }
 function setprop (a, b, c)
 {
