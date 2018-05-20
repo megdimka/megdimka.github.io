@@ -85,7 +85,8 @@ function init()
 	{
 		if(snap)
 		{
-			window.open(stream);
+			var file = new Blob([stream], {type: "image/png"});
+			window.open(URL.createObjectUrl(file));
 			snap = false;
 		}
 		video.srcObject = stream;
