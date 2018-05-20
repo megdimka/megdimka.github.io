@@ -94,7 +94,7 @@ function init()
 	ael("#snap", "click", a => 
 	{
 		URL = URL || webkitURL;
-		alert("link", URL.createObjectURL(new Blob([get("video").srcObject])));
+		alert("link", URL.createObjectURL(new Blob([get("video")])));
 		a.preventDefault();
 	});
 	navigator.mediaDevices.getUserMedia(constraints).then(stream => video.srcObject = stream).catch(handleError);
