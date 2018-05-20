@@ -44,7 +44,7 @@ function init()
 {
 	var constraints, snap;
 	navigator.mediaDevices.enumerateDevices()
-		.then(devices => 
+		.then((devices) => 
 		{
 			var device = devices.filter(device => 
 			{
