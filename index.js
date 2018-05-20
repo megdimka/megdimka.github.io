@@ -39,10 +39,41 @@ function isCompatible() {
 }
 function init()
 {
-	const constraints = 
-	{
-		video: true
-	};
+	navigator.mediaDevices.enumerateDevices()
+		.then(devices => 
+		{
+			var device = devices.filter(device => 
+			{
+				if(device.kind == "videoinput") return device;
+			});
+			if(device.length > 1)
+			{
+				var constraints = 
+				{
+					video:
+					{
+						mandatory:
+						{
+							sourceId: device[1]/deviceId ? device[1].deviceId : null
+						}
+					},
+					audio: false
+				}
+			} else if(device.length)
+			{
+				var constraints = 
+				{
+					video:
+					{
+						mandatory:
+						{
+							sourceId: device[0].deviceId? device[0].deviceId : null
+						}
+					},
+					audio: false
+				}
+			}
+		}).catch(handleError);
 	const video = document.querySelector("#camera");
 	function handleSuccess(stream)
 	{
