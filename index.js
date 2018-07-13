@@ -25,7 +25,7 @@ function sw()
 		navigator.serviceWorker.register('sw.js');
 	} else
 	{
-		console.log.e('[serviceWorker] not found');
+		console.log.e('[serviceWorker] not supported');
 	}
 }
 function onload()
